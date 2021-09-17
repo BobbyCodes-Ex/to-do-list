@@ -17,9 +17,8 @@ $(document).ready(function(){
         }
       });
     }
-    var tasks = [];
-    var filterTasks = function (element) {
-      
+    
+    var filterTasks = function (element) { 
       var status = $(element).data('type');
       $('#todo-list').empty();
       tasks.filter(function(task) {
