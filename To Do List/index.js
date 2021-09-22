@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+    
     var getAndDisplayAllTasks = function () {
       $.ajax({
         type: 'GET',
@@ -17,9 +17,15 @@ $(document).ready(function(){
         }
       });
     }
-    
+    var tasks = [];
+    var filterType = 'all';
     var filterTasks = function (element) { 
       var status = $(element).data('type');
+      if (!status) {
+        status = filterType;
+      } else {
+        filterType = status;
+      }
       $('#todo-list').empty();
       tasks.filter(function(task) {
         if (status === 'all') {
@@ -74,6 +80,7 @@ $(document).ready(function(){
   
     $(document).on('click', '.delete', function () {
       deleteTask($(this).data('id'));
+      status;
     });
   
     var markTaskComplete = function (id) {
